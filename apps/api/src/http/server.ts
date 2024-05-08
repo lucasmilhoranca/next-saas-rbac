@@ -20,6 +20,7 @@ import { requestPasswordRecover } from './routes/auth/request-password-recover'
 import { resetPassword } from './routes/auth/reset-password'
 import { createOrganization } from './routes/orgs/create-organization'
 import { getMembership } from './routes/orgs/get-membership'
+import { seed } from './routes/seed/seed'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -57,6 +58,8 @@ app.register(fastifyJwt, {
 })
 
 app.register(fastifyCors)
+
+app.register(seed)
 
 app.register(createAccount)
 app.register(authenticateWithPassword)
